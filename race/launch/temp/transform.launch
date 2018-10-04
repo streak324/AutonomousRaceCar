@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+
+<launch>
+
+    <!--Has IMU-specific transforms, for possible use with future IMU-based odometry-->
+
+	<arg name="map_name" value="SmallObstacles"/>
+
+	<node pkg="tf" type="static_transform_publisher" name="base_frame_to_laser" args="0.0 0.0 0.0 0.0 0.0 0.0 /base_frame /laser 50" />
+
+    <node pkg="tf" type="static_transform_publisher" name="base_frame_to_imu" args="0 0 0 0 0 0 /base_frame /base_imu_link 10" />
+
+    <node pkg="map_server" type="map_server" name="map_server" args="$(find race)/map/$(arg map_name).yaml"  output="screen" />
+
+    <node pkg="race" type="imuFixer.py" name="imuFixer" />
+
+    <param name="use_sim_time" value="false"/>
+</launch>

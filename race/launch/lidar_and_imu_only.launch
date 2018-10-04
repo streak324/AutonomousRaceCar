@@ -1,0 +1,7 @@
+<launch>
+
+  <node name="lidar" pkg="urg_node" type="urg_node" args="_ip_address:='192.168.1.11'"/>  
+  <node name="breezyslam" pkg="race" type="test_hokuyo.py"/>  
+  <include file="$(find razor_imu_9dof)/launch/razor-pub.launch"/>
+
+</launch>

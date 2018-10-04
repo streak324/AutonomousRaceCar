@@ -1,0 +1,14 @@
+<launch>
+  <node name="talker" pkg="race" type="talker.py"/>
+  
+  <node name="teensy" pkg="rosserial_python" type="serial_node.py" args="/dev/ttyACM0"/>
+  
+<!-- 
+  <node name="dist_finder" pkg="race" type="dist_finder.py"/> 
+-->
+
+  <node name="control" pkg="race" type="control.py"/>
+  <node name="wall_chooser" pkg="race" type="wallChooser.py" output="screen"/>
+
+
+</launch>

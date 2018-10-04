@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+
+<launch>
+  <param name="/use_camera" value="true"/>
+ 
+  <node name="edge_viewer" pkg="image_view" type="image_view" args="image:=/right_edges"/>
+
+  <node name="recon_viewer" pkg="image_view" type="image_view" args="image:=/right_reconstruct"/>
+  
+  <node name="line_detector" pkg="race" type="lineDetect" output="screen"/>
+
+  <node name="lidar" pkg="urg_node" type="urg_node" args="_ip_address:='192.168.1.11'"/>  
+
+  <node name="obstacle_detector" pkg="race" type="obstacle_detector.py" output="screen" />
+ 
+</launch>
